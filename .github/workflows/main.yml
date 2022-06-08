@@ -2,11 +2,8 @@
 
 name: 'Terraform'
 
-on:
-  push:
-    branches:
-    - master
-  pull_request:
+
+on: [workflow_dispatch]
 
 jobs:
   terraform:
