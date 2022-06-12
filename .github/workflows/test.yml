@@ -56,7 +56,8 @@ jobs:
     - name: Setup Terraform
       uses: hashicorp/setup-terraform@v2
       env:
-        cli_config_credentials_token: '44TKpj7N1dtk7Q.atlasv1.byCYsCFbQzTJlK5me8UWpQyhOtgzv4uyvDUESXPoNVpjvKpm7u55odZu9S8eCPqKCSI'
+        cli_config_credentials_token: vkGpr27B3OQP0Q.atlasv1.iyvWJJR38T2AsWFseBRzXxlQNzFBKgOtZ7X0wvA6UxtjIrfzLytNfAMRuvtW38Pyw1I
+
         cli_config_credentials_hostname: app.terraform.io
         terraform_version: 1.2.2
     
