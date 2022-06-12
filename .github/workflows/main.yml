@@ -1,19 +1,16 @@
-name: Run Azure Login with OpenID Connect
 on: [workflow_dispatch]
 
-      
-jobs: 
+name: AzureLoginSample
+
+jobs:
+
   build-and-deploy:
     runs-on: ubuntu-latest
-    
     steps:
-    - name: 'Az CLI login'
-      uses: azure/login@v1
+    
+    - uses: azure/login@v1
       with:
-          creds: $ {secrets.AZURE.CREDENTIALS}}
-          
-    - name: 'Run Azure CLI commands'
-      run: |
-          az account show
-          az group list
-          pwd 
+        creds: ${{ secrets.AZURE_CREDENTIALS }}
+    
+    - run: |
+        az webapp list --query "[?state=='Running']"
