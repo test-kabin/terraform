@@ -1,0 +1,54 @@
+name: 'Create Infra with Terraform'
+
+on: [workflow_dispatch]
+
+  
+env:
+  STORAGE_ACCOUNT_NAME: storagetfstate013
+  RESOURCE_GROUP_NAME: rg-terraform-state
+  CONTAINER_NAME: tfstate
+  BLOB_NAME: terraform.tfstate
+  
+  WORKING_DIRECTORY: 05_Web_Sql_database
+  
+jobs:
+  scan-terraform-config:
+    runs-on: ubuntu-latest
+    name: Scan Terraform with Checov
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@master
+
+      - name: Run Checkov Scan
+        id: checkov
+        uses: bridgecrewio/checkov-action@master
+        with:
+          directory: ${{ env.WORKING_DIRECTORY }}
+          soft_fail: true # optional: do not return an error code if there are failed checks
+          # check: CKV_AWS_1 # optional: run only a specific check_id. can be comma separated list
+          # skip_check: CKV_AWS_2 # optional: skip a specific check_id. can be comma separated list
+          # quiet: true # optional: display only failed checks
+          # framework: terraform # optional: run only on a specific infrastructure {cloudformation,terraform,kubernetes,all}
+          # output_format: sarif # optional: the output format, one of: cli, json, junitxml, github_failed_only, or sarif. Default: sarif
+          # download_external_modules: true # optional: download external terraform modules from public git repositories and terraform registry
+          # log_level: DEBUG # optional: set log level. Default WARNING
+          # config_file: path/this_file
+          # baseline: cloudformation/.checkov.baseline # optional: Path to a generated baseline file. Will only report results not in the baseline.
+          # container_user: 1000 # optional: Define what UID and / or what GID to run the container under to prevent permission issues
+ 
+  deploy-azure-infra-terraform:
+    name: Deploy to Azure with Terraform
+    runs-on: ubuntu-latest
+    environment: production
+    needs: [scan-terraform-config]
+
+    # Use the Bash shell regardless whether the GitHub Actions runner is ubuntu-latest, macos-latest, or windows-latest
+    defaults:
+      run:
+        shell: bash
+        working-directory: ${{ env.WORKING_DIRECTORY }}
+
+    steps:
+    # Checkout the repository to the GitHub Actions runner
+    - name: Checkout
+      uses: actions/checkout@v2
