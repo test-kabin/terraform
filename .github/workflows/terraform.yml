@@ -79,17 +79,17 @@ jobs:
         #                -backend-config="resource_group_name=$RESOURCE_GROUP_NAME"
   
     # Checks that all Terraform configuration files adhere to a canonical format
-    - name: Terraform Format
-      id: format
-      run: terraform fmt -check
-      continue-on-error: true
+    # - name: Terraform Format
+    #   id: format
+    #   run: terraform fmt -check
+    #   continue-on-error: true
 
     - name: Terraform Plan
       id: plan
       env:
          AZURE_CREDENTIALS: ${{ secrets.AZURE_CREDENTIALS }}
         
-      if: github.event_name == 'pull_request' # 'push' # 
+      if: github.event_name == 'workflow_dispatch' # 'push' # 
       run: |
         terraform plan -no-color 
         # terraform plan -out tfplan -no-color 
