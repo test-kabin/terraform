@@ -53,13 +53,13 @@ jobs:
     - name: Checkout
       uses: actions/checkout@v2
 
- # Install the latest version of Terraform CLI
-    - name: Install Terraform
+    - name: Setup Terraform
       uses: hashicorp/setup-terraform@v2
       with:
         cli_config_credentials_token: ${{ secrets.TF_TOKEN }}
         cli_config_credentials_hostname: app.terraform.io
         terraform_version: 1.2.2
+    
         
     
     - name: Terraform Init
