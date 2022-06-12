@@ -1,4 +1,4 @@
-erraform {
+Terraform {
   required_providers {
     azurerm = {
       source  = "hashicorp/azurerm"
