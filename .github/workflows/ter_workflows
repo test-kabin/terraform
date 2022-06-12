@@ -4,12 +4,12 @@ on: [workflow_dispatch]
 
   
 env:
-  STORAGE_ACCOUNT_NAME: storagetfstate013
-  RESOURCE_GROUP_NAME: rg-terraform-state
-  CONTAINER_NAME: tfstate
-  BLOB_NAME: terraform.tfstate
+  # STORAGE_ACCOUNT_NAME: storagetfstate013
+  # RESOURCE_GROUP_NAME: rg-terraform-state
+  # CONTAINER_NAME: tfstate
+  # BLOB_NAME: terraform.tfstate
   
-  WORKING_DIRECTORY: 05_Web_Sql_database
+  WORKING_DIRECTORY: terraform
   
 jobs:
   scan-terraform-config:
