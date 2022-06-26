@@ -44,8 +44,7 @@ jobs:
             echo "${{ steps.secrets.output.USERNAME }}"
             echo "security = ${{ steps.secrets.output.USERNAME }}" >> $GITHUB_ENV
             echo "${{env.security}}"
-            #ls -la ~
-            #cat ~/output.txt
+            
            
         
 
