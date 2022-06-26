@@ -25,10 +25,12 @@ jobs:
                 kyndryl/sredemo/cubbyhole/github username  | USERNAME
                 
                 
-      # - name: Import secrets
-      #   id: secret1
-      #   run: |
-      #       echo "${{ steps.secrets.output.USERNAME }}"
+
+      - name: Import secrets
+        id: secret1
+        run: |
+            echo "${{ steps.secrets.output.USERNAME }}"
+            env
       #       # echo "vault_output=${{ steps.secrets.output.USERNAME }}" >> $GITHUB_ENV
             
            
