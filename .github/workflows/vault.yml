@@ -35,6 +35,7 @@ jobs:
             echo "${{ steps.secrets.output.NAMEE }}" >> ~/outputs.txt
             cat ~/outputs.txt
             echo "~/outputs.txt" >> $GITHUB_PATH
+            echo "$GITHUB_PATH"
             # echo "vault_output=${{ steps.secrets.output.NAMEE }}" >> ./outputs.txt
 
             
