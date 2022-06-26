@@ -25,21 +25,13 @@ jobs:
                 kyndryl/sredemo/cubbyhole/github username  | USERNAME
                 
                 
-
-      # - name: Set the value
-      #   id: step_one
-      #   run: |
-      #     echo "action_state=yellow" >> $GITHUB_ENV
-      # - name: Use the value
-      #   id: step_two
-      #   run: |
-      #     echo "${{ env.action_state }}" # This will output 'yellow'
-                
       - name: Import secrets
         id: secret1
         run: |
+            security = ${{ steps.secrets.output.USERNAME }}
+            echo "$security"
             echo "${{ steps.secrets.output.USERNAME }}"
-            echo "security = ${{ steps.secret1.output.USERNAME }}" >> $GITHUB_ENV
+            echo "$security" >> $GITHUB_ENV
            
       - name: use the value 
         id:   step_t
