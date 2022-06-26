@@ -11,9 +11,6 @@ jobs:
     runs-on: ubuntu-latest
     steps:
 
-#       - name: action-vault-openshift
-#         uses: CIO/action-vault-openshift@v0
-
     
       - name: Retrieve Secrets From Vault
         id: secrets
@@ -39,14 +36,14 @@ jobs:
           echo "${{ env.action_state }}" # This will output 'yellow'
                 
       - name: Import secrets
-        id: secrets1
+        id: secrets
         run: |
             echo "${{ steps.secrets.output.USERNAME }}"
             echo "security = ${{ steps.secrets.output.USERNAME }}" >> $GITHUB_ENV
-            echo "${{env.security}}"
-            #ls -la ~
-            #cat ~/output.txt
            
-        
+      - name: use the value 
+        id:   step_two
+        run:  |
+           echo "${{ env.security }}" 
 
 
