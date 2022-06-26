@@ -25,17 +25,17 @@ jobs:
                 kyndryl/sredemo/cubbyhole/github username  | USERNAME
                 
                 
-      - name: Import secrets
-        id: secret1
-        run: |
-            security = ${{ steps.secrets.output.USERNAME }}
-            echo "$security"
-            echo "${{ steps.secrets.output.USERNAME }}"
-            echo "$security" >> $GITHUB_ENV
+      # - name: Import secrets
+      #   id: secret1
+      #   run: |
+      #       security = ${{ steps.secrets.output.USERNAME }}
+      #       echo "$security"
+      #       echo "${{ steps.secrets.output.USERNAME }}"
+      #       echo "$security" >> $GITHUB_ENV
            
-      - name: use the value 
-        id:   step_t
-        run:  |
-           echo "${{ env.security }}" 
+      # - name: use the value 
+      #   id:   step_t
+      #   run:  |
+      #      echo "${{ env.security }}" 
 
 
