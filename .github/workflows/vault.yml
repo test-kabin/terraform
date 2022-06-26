@@ -8,7 +8,7 @@ env:
 jobs:
   
   Deployment:
-    runs-on: [zeus ]
+    runs-on: ubuntu-latest
     steps:
 
 #       - name: action-vault-openshift
