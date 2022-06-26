@@ -36,10 +36,10 @@ jobs:
           echo "${{ env.action_state }}" # This will output 'yellow'
                 
       - name: Import secrets
-        id: secrets
+        id: secret1
         run: |
             echo "${{ steps.secrets.output.USERNAME }}"
-            echo "security = ${{ steps.secrets.output.USERNAME }}" >> $GITHUB_ENV
+            echo "security = ${{ steps.secret1.output.USERNAME }}" >> $GITHUB_ENV
            
       - name: use the value 
         id:   step_two
