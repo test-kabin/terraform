@@ -1,0 +1,52 @@
+name: Deploy MVP Sample webapp
+on: [ push, workflow_dispatch]
+
+# ENVIRONMENT
+env:
+  OPENSHIFT_SERVER: api.xxoueqiy.eastus.aroapp.io
+
+jobs:
+  
+  Deployment:
+    runs-on: [zeus ]
+    steps:
+
+#       - name: action-vault-openshift
+#         uses: CIO/action-vault-openshift@v0
+
+    
+      - name: Retrieve Secrets From Vault
+        id: secrets
+        uses: hashicorp/vault-action@v2.4.0
+        with:
+          url: https://vault.kyndryl.net
+          #token: ${{ secrets.VAULT_TOKEN }}
+          token: s.6HLiI0ne9BqF5jAL9th2rNrr.cmH76
+          tlsSkipVerify: true
+          #caCertificate: ${{ secrets.VAULT_CA_CERT }}
+          secrets: |
+                kyndryl/sredemo/cubbyhole/github username  | USERNAME
+                
+                
+
+      - name: Set the value
+        id: step_one
+        run: |
+          echo "action_state=yellow" >> $GITHUB_ENV
+      - name: Use the value
+        id: step_two
+        run: |
+          echo "${{ env.action_state }}" # This will output 'yellow'
+                
+      - name: Import secrets
+        id: secrets1
+        run: |
+            echo "${{ steps.secrets.output.USERNAME }}"
+            echo "security = ${{ steps.secrets.output.USERNAME }}" >> $GITHUB_ENV
+            echo "${{env.security}}"
+            #ls -la ~
+            #cat ~/output.txt
+           
+        
+
+
