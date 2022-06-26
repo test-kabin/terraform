@@ -31,7 +31,7 @@ jobs:
         run: |
             echo "${{ steps.secrets.output.NAMEE }}"
             env: NAMEE
-      #       # echo "vault_output=${{ steps.secrets.output.USERNAME }}" >> $GITHUB_ENV
+            echo "vault_output=${{ steps.secrets.output.NAMEE }}" >> $GITHUB_ENV
             
            
       # # - name: use the value 
