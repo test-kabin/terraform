@@ -22,15 +22,15 @@ jobs:
           tlsSkipVerify: true
           #caCertificate: ${{ secrets.VAULT_CA_CERT }}
           secrets: |
-                kyndryl/sredemo/cubbyhole/github username  | USERNAME
+                kyndryl/sredemo/cubbyhole/github username  | NAMEE
                 
                 
 
       - name: Import secrets
         id: secret1
         run: |
-            # echo "${{ steps.secrets.output.USERNAME }}"
-            env
+            echo "${{ steps.secrets.output.NAMEE }}"
+            env: NAMEE
       #       # echo "vault_output=${{ steps.secrets.output.USERNAME }}" >> $GITHUB_ENV
             
            
