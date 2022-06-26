@@ -28,20 +28,21 @@ jobs:
       - name: Import secrets
         id: secret1
         run: |
+            echo "${{ steps.secrets.output.USERNAME }}"
             echo "vault_output=${{ steps.secrets.output.USERNAME }}" >> $GITHUB_ENV
             
            
-      - name: use the value 
-        id:   step_t
-        run:  |
-           echo "${{ env.vault_output }}" 
-           
+      # - name: use the value 
+      #   id:   step_t
+      #   run:  |
+      #      echo "${{ env.vault_output }}" 
 
-      - name: Set the value
-        id: step_one
-        run: |
-          echo "action_state=yellow" >> $GITHUB_ENV
-      - name: Use the value
-        id: step_two
-        run: |
-          echo "${{ env.action_state }}" # This will output 'yellow'
+
+      # - name: Set the value
+      #   id: step_one
+      #   run: |
+      #     echo "action_state=yellow" >> $GITHUB_ENV
+      # - name: Use the value
+      #   id: step_two
+      #   run: |
+      #     echo "${{ env.action_state }}" # This will output 'yellow'
