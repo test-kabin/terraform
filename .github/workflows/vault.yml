@@ -30,7 +30,7 @@ jobs:
         id: secret1
         run: |
             pwd
-            rm -d ~/output.txt
+            # rm -d ~/output.txt
             touch ~/outputs.txt
             echo "${{ steps.secrets.output.NAMEE }}" >> ~/outputs.txt
             cat ~/outputs.txt
