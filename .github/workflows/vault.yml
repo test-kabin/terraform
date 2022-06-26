@@ -25,12 +25,16 @@ jobs:
                 kyndryl/sredemo/cubbyhole/github username  | NAMEE
                 
                 
-
+ 
       - name: Import secrets
         id: secret1
         run: |
-            echo "${{ steps.secrets.output.NAMEE }}"
-            echo "vault_output=${{ steps.secrets.output.NAMEE }}" >> $GITHUB_ENV
+            pwd
+            mkdir ~/output.txt
+            echo "${{ steps.secrets.output.NAMEE }}" >> ~/output.txt
+            cat ~/output.txt
+            # echo "vault_output=${{ steps.secrets.output.NAMEE }}" >> ./output.txt
+
             
            
       # # - name: use the value 
